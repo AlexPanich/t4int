@@ -1,0 +1,9 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<ul>
+    {% for article in news %}
+        <li><a href="/article/{{ article.id }}">{{ article.title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
