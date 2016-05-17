@@ -19,7 +19,7 @@ class News extends Controller
 
     public function actionShow($id)
     {
-        $a = $this->data->article = Article::findByPK($id);
+        $this->data->article = Article::findByPK($id);
     }
 
     public function actionCreate()
