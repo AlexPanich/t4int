@@ -25,7 +25,6 @@ class Article extends Model
 
     public function update($attributes)
     {
-        var_dump($this);
         $this->fill($attributes)->save();
     }
 
