@@ -1,9 +1,11 @@
-{% extends 'Index.html' %}
+{% extends 'Master.html' %}
 
 {% block content %}
-<ul>
-    {% for article in news %}
-        <li><a href="/article/{{ article.id }}">{{ article.title }}</a></li>
-    {% endfor %}
-</ul>
+<div class="container">
+    <ul>
+        {% for article in news %}
+            <li><a href="/article/{{ article.id }}">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

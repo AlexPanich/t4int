@@ -1,8 +1,8 @@
-{% extends 'Index.html' %}
+{% extends 'Master.html' %}
 
 {% block content %}
-    <p>{{ description }}</p>
-    <br>
-    <h2>Последняя новость:</h2>
-    <t4:block path="//News/Article(id=3)">
+    <div class="container">
+        <br>
+        <a class="btn btn-primary" href="/article">Страница новостей</a>
+    </div>
 {% endblock %}

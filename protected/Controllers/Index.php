@@ -10,13 +10,6 @@ class Index
 
     public function actionDefault()
     {
-        $this->data['description'] = $this->app->config['description'];
-    }
 
-    public function actionAbout()
-    {
-        $this->date['title'] = 'Обо мне';
-        $this->data['description'] = 'Я программист на PHP';
     }
-
 }

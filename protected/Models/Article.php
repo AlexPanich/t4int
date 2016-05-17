@@ -1,29 +1,41 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 013 13.05.16
- * Time: 9:33
- */
 
 namespace App\Models;
 
-use T4\Core\Std;
+use T4\Orm\Model;
 
-class Article extends Std
+class Article extends Model
 {
-    public static function all()
+    const PK = 'id';
+
+    protected static $schema = [
+        'columns' => [
+            'id' => ['type' => 'pk'],
+            'title' => ['type' => 'string'],
+            'text' => ['type' => 'text'],
+            'published_at' => ['type' => 'datetime']
+        ]
+    ];
+
+    public static function create($attributes)
     {
-        $db = new News(__DIR__ .'/../db_array.php');
-
-        return $db->findAll();
-
+        $attributes['published_at'] = date('Y-m-d');
+        (new static)->fill($attributes)->save();
     }
 
-    public static function find($id)
+    public function update($attributes)
     {
-        $db = new News(__DIR__ .'/../db_array.php');
+        var_dump($this);
+        $this->fill($attributes)->save();
+    }
 
-        return $db->findOne($id);
+    public function getPreview()
+    {
+        return mb_substr($this->text, 0, 10) . '...';
+    }
+
+    public function getRepresentation()
+    {
+        return nl2br($this->text);
     }
 }

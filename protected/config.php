@@ -1,7 +1,16 @@
 <?php
 
 return [
-    'title' => 'Мой первый сайт на t4',
-    'description' => 'На примере этого сайта я хорошо разберусь в t4',
-    'extensions' => ['bootstrap' => ['theme' => 'cosmo'] ]
+    'title' => 'Изучаем t4',
+    'extensions' => ['bootstrap' => ['theme' => 'cosmo'] ],
+    'db' => [
+        'default' => [
+            'driver' => 'mysql',
+            'host' => '127.0.0.1',
+            'dbname' => 't4int',
+            'user' => 'root',
+            'password' => '',
+        ]
+    ],
+
 ];
