@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 019 19.05.16
- * Time: 15:19
- */
 
 namespace App\Models;
 
@@ -40,5 +34,16 @@ class Category extends CustomModel
         if (!empty($sibling)) {
             $this->insertAfter($sibling);
         }
+    }
+
+    public function getAllProducts()
+    {
+        $products = $this->products;
+        if (count($this->children) > 0) {
+            foreach($this->children as $child) {
+                $products->merge($child->getAllProducts());
+            }
+        }
+        return $products;
     }
 }

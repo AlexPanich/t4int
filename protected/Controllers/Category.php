@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: User
- * Date: 019 19.05.16
- * Time: 15:25
- */
 
 namespace App\Controllers;
 
@@ -79,6 +73,13 @@ class Category extends Controller
     public function actionProducts($id)
     {
        $this->data->category = CategoryModel::findByPK($id);
+    }
+
+    public function actionProductsall($id)
+    {
+        $category = CategoryModel::findByPK($id);
+
+        $this->data->products = $category->getAllProducts();
     }
 
 }
