@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container">
     <h3>Категория: {{ category.name }}</h3>
-    {% if not category.products.isEmpty() %}
+    {% if  category.products.count != 0 %}
         {% for product in category.products %}
             <ul class="list-group">
                 <li class="list-group-item">Название: {{ product.name }}</li>
@@ -16,11 +16,11 @@
         Категория пустая
     {% endif %}
     <br>
-    {% if not category.children.isEmpty() %}
+    {% if category.children.count != 0 %}
         <h4>Продукты из вложенных категорий</h4>
         {% for child in category.children %}
             <h5>Категория: {{ child.name }}</h5>
-            {% if not child.products.isEmpty()  %}
+            {% if child.products.count != 0  %}
                 {% for product in child.products %}
                     <ul class="list-group">
                         <li class="list-group-item">Название: {{ product.name }}</li>
