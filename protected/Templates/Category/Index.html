@@ -1,0 +1,30 @@
+{% extends 'Master.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+    <ul class="list-group col-md-6">
+        {% for item in items %}
+            <li class="list-group-item">
+                <span>{{ item.name }}</span>
+                <a href="/category/products?id={{ item.pk }}">посмотреть</a>
+                <div class="pull-right">
+                    <a href="/category/up?id={{ item.pk }}">
+                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>вверх
+                    </a>
+                    <a href="/category/down?id={{ item.pk }}">
+                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>вниз
+                    </a>
+                    <a href="/category/delete?id={{ item.pk }}">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>удалить
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div class="row">
+        <a href="/category/create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Добавить категорию</a>
+    </div>
+</div>
+{% endblock %}

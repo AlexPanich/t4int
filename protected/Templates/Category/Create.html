@@ -1,0 +1,22 @@
+{% extends 'Master.html' %}
+
+{% block content %}
+<div class="container">
+    <form action="/category/store" method="post">
+        <div class="form-group">
+            <label for="name">Имя категории:</label>
+            <input class="form-control" type="text" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="parent">Родитель:</label>
+            <select class="form-control" name="parent" id="parent">
+                {% for item in items %}
+                   <option value="{{ item.pk }}">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-success" type="submit">Добавить категорию</button>
+        <a class="btn btn-danger" href="/category">Уйти не добавив</a>
+    </form>
+</div>
+{% endblock %}

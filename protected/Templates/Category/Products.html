@@ -1,0 +1,39 @@
+{% extends 'Master.html' %}
+
+{% block content %}
+<div class="container">
+    <h3>Категория: {{ category.name }}</h3>
+    {% if not category.products.isEmpty() %}
+        {% for product in category.products %}
+            <ul class="list-group">
+                <li class="list-group-item">Название: {{ product.name }}</li>
+                <li class="list-group-item">Цена: {{ product.price }}</li>
+                <li class="list-group-item">Описание: {{ product.description }}</li>
+                <li class="list-group-item">Осталось: {{ product.count }}</li>
+            </ul>
+        {% endfor %}
+    {% else %}
+        Категория пустая
+    {% endif %}
+    <br>
+    {% if not category.children.isEmpty() %}
+        <h4>Продукты из вложенных категорий</h4>
+        {% for child in category.children %}
+            <h5>Категория: {{ child.name }}</h5>
+            {% if not child.products.isEmpty()  %}
+                {% for product in child.products %}
+                    <ul class="list-group">
+                        <li class="list-group-item">Название: {{ product.name }}</li>
+                        <li class="list-group-item">Цена: {{ product.price }}</li>
+                        <li class="list-group-item">Описание: {{ product.description }}</li>
+                        <li class="list-group-item">Осталось: {{ product.count }}</li>
+                    </ul>
+                {% endfor %}
+            {% else %}
+                Категория пустая
+            {% endif %}
+        <br>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}
