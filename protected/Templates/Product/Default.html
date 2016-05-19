@@ -1,0 +1,14 @@
+{% extends 'Master.html' %}
+
+{% block content %}
+<div class="container">
+    <h3>Страница товара</h3>
+    <ul>
+        <li>Категория: {{ product.category.name }}</li>
+        <li>Название: {{ product.name }}</li>
+        <li>Цена: {{ product.price }}</li>
+        <li>Колличество: {{ product.count }}</li>
+        <li>Описание: {{ product.description }}</li>
+    </ul>
+</div>
+{% endblock %}

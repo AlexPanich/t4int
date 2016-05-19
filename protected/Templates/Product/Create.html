@@ -1,0 +1,34 @@
+{% extends 'Master.html' %}
+
+{% block content %}
+<div class="container">
+    <h3>Создание товара</h3>
+    <form action="/product/store" method="post">
+        <div class="form-group">
+            <label for="name">Название товара:</label>
+            <input class="form-control" type="text" name="name" id="name">
+        </div>
+        <div class="form-group">
+            <label for="price">Цена товара:</label>
+            <input class="form-control" type="number" name="price" id="price">
+        </div>
+        <div class="form-group">
+            <label for="count">Колличество:</label>
+            <input class="form-control" type="number" name="count" id="count">
+        </div>
+        <div class="form-group">
+            <label for="description">Описание товара:</label>
+            <textarea class="form-control" name="description" id="description" rows="10"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="category">Категория:</label>
+            <select class="form-control" name="category" id="category">
+                {% for category in categories %}
+                    <option value="{{ category.pk }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-success" type="submit">Создать товар</button>
+    </form>
+</div>
+{% endblock %}

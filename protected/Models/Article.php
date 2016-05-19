@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use T4\Orm\Model;
 
-class Article extends Model
+class Article extends CustomModel
 {
     const PK = 'id';
 
@@ -20,12 +19,7 @@ class Article extends Model
     public static function create($attributes)
     {
         $attributes['published_at'] = date('Y-m-d');
-        (new static)->fill($attributes)->save();
-    }
-
-    public function update($attributes)
-    {
-        $this->fill($attributes)->save();
+        parent::create($attributes);
     }
 
     public function getPreview()

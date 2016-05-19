@@ -9,9 +9,8 @@
 namespace App\Models;
 
 
-use T4\Orm\Model;
 
-class Category extends Model
+class Category extends CustomModel
 {
     static protected $schema = [
         'table' => 'categories',
@@ -24,11 +23,6 @@ class Category extends Model
     ];
 
     static protected $extensions = ['tree'];
-
-    public static function create($attributes)
-    {
-        (new static)->fill($attributes)->save();
-    }
 
     public function moveUp()
     {

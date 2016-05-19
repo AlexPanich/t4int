@@ -9,9 +9,8 @@
 namespace App\Models;
 
 
-use T4\Orm\Model;
 
-class Product extends Model
+class Product extends CustomModel
 {
     protected static $schema = [
         'columns' => [
