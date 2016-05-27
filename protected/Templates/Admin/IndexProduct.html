@@ -10,7 +10,9 @@
         <li>Колличество: {{ product.count }}</li>
         <li>Описание: {{ product.description }}</li>
     </ul>
-    <a href="/product/show?id={{ product.pk }}">Посмотреть</a>
+    <a href="/admin/product/show?id={{ product.pk }}">Посмотреть</a> |
+    <a href="/admin/product/edit?id={{ product.pk }}">Редактировать</a> |
+    <a href="/admin/product/delete?id={{ product.pk }}">Удалить</a>
     <hr>
     {% endfor %}
 </div>

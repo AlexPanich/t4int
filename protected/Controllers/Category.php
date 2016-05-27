@@ -9,65 +9,7 @@ class Category extends Controller
 {
     public function actionDefault()
     {
-    }
-
-    public function actionIndex()
-    {
-        $this->data->items = CategoryModel::findAllTree();
-    }
-
-    public function actionCreate()
-    {
-        $this->data->items = CategoryModel::findAllTree();
-    }
-
-    public function actionStore()
-    {
-        if ($this->app->request->method != 'post') {
-            $this->redirect('/article');
-        }
-        CategoryModel::create($this->app->request->post);
-
-        $this->redirect('/category');
-    }
-
-    public function actionDelete($id)
-    {
-        $category = CategoryModel::findByPK($id);
-
-        if (empty($category)) {
-            $this->redirect('/category/index');
-        }
-
-        $category->delete();
-
-        $this->redirect('/category/index');
-    }
-
-    public function actionUp($id)
-    {
-        $category = CategoryModel::findByPK($id);
-
-        if (empty($category)) {
-            $this->redirect('/category/index');
-        }
-
-        $category->moveUp();
-
-        $this->redirect('/category/index');
-
-    }
-
-    public function actionDown($id)
-    {
-        $category = CategoryModel::findByPK($id);
-
-        if (empty($category))
-            $this->redirect('/category/index');
-
-        $category->moveDown();
-
-        $this->redirect('/category/index');
+        $this->data->categories = CategoryModel::findAllTree();
     }
 
     public function actionProducts($id)

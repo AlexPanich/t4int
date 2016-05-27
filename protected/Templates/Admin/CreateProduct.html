@@ -2,23 +2,36 @@
 
 {% block content %}
 <div class="container">
+    {% if errors is defined %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in errors %}
+            <li>{{ error.getMessage() }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
     <h3>Создание товара</h3>
-    <form action="/product/store" method="post">
+    <form action="/admin/product/store" method="post">
         <div class="form-group">
             <label for="name">Название товара:</label>
-            <input class="form-control" type="text" name="name" id="name">
+            <input class="form-control" type="text" name="name" id="name"
+                   {% if fields is defined %} value="{{ fields.name }}" {% endif %}>
         </div>
         <div class="form-group">
             <label for="price">Цена товара:</label>
-            <input class="form-control" type="number" name="price" id="price">
+            <input class="form-control" type="number" name="price" id="price"
+                   {% if fields is defined %} value="{{ fields.price }}" {% endif %}>
         </div>
         <div class="form-group">
             <label for="count">Колличество:</label>
-            <input class="form-control" type="number" name="count" id="count">
+            <input class="form-control" type="number" name="count" id="count"
+                   {% if fields is defined %} value="{{ fields.count }}" {% endif %}>
         </div>
         <div class="form-group">
             <label for="description">Описание товара:</label>
-            <textarea class="form-control" name="description" id="description" rows="10"></textarea>
+            <textarea class="form-control" name="description" id="description" rows="10"
+            >{% if fields is defined %} {{ fields.description }} {% endif %}</textarea>
         </div>
         <div class="form-group">
             <label for="category">Категория:</label>

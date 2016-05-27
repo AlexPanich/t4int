@@ -4,6 +4,8 @@ namespace App\Models;
 
 
 
+use T4\Core\Exception;
+
 class Category extends CustomModel
 {
     static protected $schema = [
@@ -45,5 +47,24 @@ class Category extends CustomModel
             }
         }
         return $products;
+    }
+
+    public function validateName($val)
+    {
+        if (mb_strlen($val) < 3) {
+            throw new Exception('Слишком короткое имя');
+        }
+    }
+
+    public function sanitizeName($val)
+    {
+        return mb_strtoupper(mb_substr($val, 0, 1)) . mb_strtolower(mb_substr($val, 1));
+    }
+
+    protected function afterDelete()
+    {
+        foreach ($this->products as $product) {
+            $product->delete();
+        }
     }
 }

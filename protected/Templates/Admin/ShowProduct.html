@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="container">
-    {% for product in products %}
+    <h3>Страница товара</h3>
     <ul>
         <li>Категория: {{ product.category.name }}</li>
         <li>Название: {{ product.name }}</li>
@@ -10,8 +10,7 @@
         <li>Колличество: {{ product.count }}</li>
         <li>Описание: {{ product.description }}</li>
     </ul>
-    <a href="/product/show?id={{ product.pk }}">Посмотреть</a>
-    <hr>
-    {% endfor %}
+    <a href="/admin/product/edit?id={{ product.pk }}">Редактировать</a> |
+    <a href="/admin/product/delete?id={{ product.pk }}">Удалить</a>
 </div>
 {% endblock %}

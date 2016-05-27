@@ -2,10 +2,20 @@
 
 {% block content %}
 <div class="container">
-    <form action="/category/store" method="post">
+    {% if errors is defined %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error.getMessage() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    <form action="/admin/category/store" method="post">
         <div class="form-group">
             <label for="name">Имя категории:</label>
-            <input class="form-control" type="text" id="name" name="name">
+            <input class="form-control" type="text" id="name" name="name"
+                   {% if fields is defined %} value="{{ fields.name }}" {% endif %}>
         </div>
         <div class="form-group">
             <label for="parent">Родитель:</label>
@@ -16,7 +26,7 @@
             </select>
         </div>
         <button class="btn btn-success" type="submit">Добавить категорию</button>
-        <a class="btn btn-danger" href="/category">Уйти не добавив</a>
+        <a class="btn btn-danger" href="/admin/category">Уйти не добавив</a>
     </form>
 </div>
 {% endblock %}

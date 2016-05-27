@@ -15,31 +15,14 @@ use T4\Mvc\Controller;
 
 class Product extends Controller
 {
-    public function actionDefault($id)
-    {
-        $this->data->product = ProductModel::findByPK($id);
-    }
-
-    public function actionCreate()
-    {
-        $this->data->categories = Category::findAllTree();
-    }
-
-    public function actionStore()
-    {
-        if ($this->app->request->method != 'post') {
-            $this->redirect('/product/index');
-        }
-
-        ProductModel::create($this->app->request->post);
-
-        $this->redirect('/product/index');
-    }
-
-    public function actionIndex()
+    public function actionDefault()
     {
         $this->data->products = ProductModel::findAll();
     }
 
+    public function actionShow($id)
+    {
+        $this->data->product = ProductModel::findByPK($id);
+    }
 
 }
